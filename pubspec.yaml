@@ -10,6 +10,8 @@ dependencies:
   device_preview: ^1.3.1
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
+  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:
@@ -18,3 +20,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+  - assets/images/floppyd.jpg
+  - assets/images/iphone.jpg
+  - assets/images/laptop.jpg
+  - assets/images/pendrive.jpg
+  - assets/images/pixel.jpg
+  - assets/images/tablet.jpg
