@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../providers/temp_provider.dart';
 
@@ -16,6 +17,20 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
+
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+
+              if (context.mounted) {
+                Navigator.pushReplacementNamed(context, '/');
+              }
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -36,11 +51,7 @@ class HomePage extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: dropdown(
-                    prov,
-                    prov.from,
-                    (v) => prov.setFrom(v),
-                  ),
+                  child: dropdown(prov, prov.from, (v) => prov.setFrom(v)),
                 ),
 
                 IconButton(
@@ -48,13 +59,7 @@ class HomePage extends StatelessWidget {
                   icon: const Icon(Icons.swap_horiz),
                 ),
 
-                Expanded(
-                  child: dropdown(
-                    prov,
-                    prov.to,
-                    (v) => prov.setTo(v),
-                  ),
-                ),
+                Expanded(child: dropdown(prov, prov.to, (v) => prov.setTo(v))),
               ],
             ),
 
@@ -62,23 +67,11 @@ class HomePage extends StatelessWidget {
 
             Row(
               children: [
-                Expanded(
-                  child: tombol(
-                    'COUNT',
-                    Colors.blue,
-                    prov.count,
-                  ),
-                ),
+                Expanded(child: tombol('COUNT', Colors.blue, prov.count)),
 
                 const SizedBox(width: 10),
 
-                Expanded(
-                  child: tombol(
-                    'RESET',
-                    Colors.red,
-                    prov.reset,
-                  ),
-                ),
+                Expanded(child: tombol('RESET', Colors.red, prov.reset)),
               ],
             ),
 
@@ -93,9 +86,7 @@ class HomePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                prov.total.isEmpty
-                    ? 'Results here'
-                    : prov.total,
+                prov.total.isEmpty ? 'Results here' : prov.total,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 20,
@@ -109,11 +100,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget dropdown(
-    TempProvider prov,
-    String value,
-    Function(String) onChanged,
-  ) {
+  Widget dropdown(TempProvider prov, String value, Function(String) onChanged) {
     return DropdownButton<String>(
       value: value,
       isExpanded: true,
@@ -127,11 +114,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget tombol(
-    String text,
-    Color color,
-    VoidCallback onPressed,
-  ) {
+  Widget tombol(String text, Color color, VoidCallback onPressed) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(

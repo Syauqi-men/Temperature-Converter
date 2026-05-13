@@ -40,7 +40,7 @@ Ensure you have the [Flutter SDK](https://docs.flutter.dev/get-started/install) 
 2.  **Install dependencies**
     ```bash
     cd temp_converter
-    flutter pub add device_preview
+    flutter pub get
     ```
 
 3.  **Launch the application**
@@ -53,7 +53,11 @@ Ensure you have the [Flutter SDK](https://docs.flutter.dev/get-started/install) 
 ## Project Structure
 
 * `lib/main.dart`: Entry point of the application.
-* `lib/widgets/`: Reusable UI components for input and display.
-* `lib/logic/`: Dedicated conversion algorithms.
+* `lib/pages/`: Reusable UI components for input and display.
+* `lib/providers/`: Dedicated conversion algorithms.
 
+## Login Page
+<p align="center">
+  <img src="assets/login_page.png" width="300" alt="Preview Login">
+</p>
 ---
