@@ -3,6 +3,8 @@
 *.log
 *.pyc
 *.swp
+*.key
+*.env
 .DS_Store
 .atom/
 .build/
@@ -48,15 +50,8 @@ app.*.map.json
 android/.gradle/
 android/local.properties
 
-# iOS
-ios/Pods/
-ios/.symlinks/
-ios/Flutter/Flutter.framework
-ios/Flutter/Flutter.podspec
-
 # IDE
 .idea/
 .vscode/
 
-# Firebase (opsional)
-android/app/google-services.json
+google-services.json
