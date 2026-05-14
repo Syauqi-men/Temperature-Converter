@@ -59,4 +59,4 @@ ios/Flutter/Flutter.podspec
 .vscode/
 
 # Firebase (opsional)
-# android/app/google-services.json
+android/app/google-services.json
